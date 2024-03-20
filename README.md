@@ -1,1 +1,1 @@
-# leedom-cli
+# Leedom CLI
