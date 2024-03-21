@@ -4,9 +4,12 @@ const path = require('path')
 const fs = require('fs')
 const glob = require('glob')
 const { program } = require('commander')
+const inquirer = require('inquirer')
 const download = require('../lib/download')
 const initGitRepo = require('../lib/initGitRepo')
 const { success, error, info } = require('../lib/utils')
+const templates = require('../lib/templates')
+const { name, version } = require('../package')
 
 program.name('leedom')
   .usage('create <app-name>')
@@ -40,15 +43,47 @@ if (!projectName) {
   }
 }
 
-function generateProject(projectName) {
-  download(projectName)
-    .then(async(target) => {
-      const repoDirectory = path.resolve(process.cwd(), path.join('.', target))
-      await initGitRepo(repoDirectory)
-      console.log('\n项目创建成功，可执行以下命令：\n')
-      console.log(success.bold(`  cd ${target}\n  pnpm install\n  pnpm dev\n`))
-    })
-    .catch(() => {
-      console.log(error('\n项目创建失败，请重试！\n'))
-    })
+// 创建项目
+async function generateProject(projectName) {
+  console.log(info(`${name} v${version}\n`))
+  const { action } = await inquirer.prompt([
+    {
+      name: 'action',
+      type: 'list',
+      message: `请选择模版类型:`,
+      choices: [
+        { name: '移动端', value: 'mobile' },
+        { name: 'PC端', value: 'pc' },
+        { name: '取消', value: false },
+      ],
+    },
+  ])
+
+  if (!action) {
+    return
+  } else {
+    const { action: url } = await inquirer.prompt([
+      {
+        name: 'action',
+        type: 'list',
+        message: `请选择模版:`,
+        choices: templates[action],
+      },
+    ])
+
+    if (!url) {
+      return
+    } else {
+      download(projectName, url)
+        .then(async(target) => {
+          const repoDirectory = path.resolve(process.cwd(), path.join('.', target))
+          await initGitRepo(repoDirectory)
+          console.log('\n项目创建成功，可执行以下命令：\n')
+          console.log(success.bold(`  cd ${target}\n  pnpm install\n  pnpm dev\n`))
+        })
+        .catch(() => {
+          console.log(error('\n项目创建失败，请重试！'))
+        })
+    }
+  }
 }

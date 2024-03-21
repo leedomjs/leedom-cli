@@ -10,6 +10,14 @@
   ],
   "author": "Leedom",
   "license": "MIT",
+  "homepage": "https://github.com/leedomjs/leedom-cli#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leedomjs/leedom-cli.git"
+  },
+  "bugs": {
+    "url": "https://github.com/leedomjs/leedom-cli/issues"
+  },
   "scripts": {
     "lint": "eslint ."
   },
@@ -28,6 +36,7 @@
     "download-git-repo": "^3.0.2",
     "execa": "5.1.1",
     "glob": "^10.3.10",
+    "inquirer": "8.0.0",
     "ora": "5.4.1"
   },
   "devDependencies": {
