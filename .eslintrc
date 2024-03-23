@@ -1,1 +1,1 @@
-{ "extends": "@leedomjs" }
+{ "extends": "@leedomjs/eslint-config-basic" }
