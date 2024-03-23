@@ -68,11 +68,7 @@ async function generateProject(projectName) {
       name: 'action',
       type: 'list',
       message: `请选择模版类型:`,
-      choices: [
-        { name: '移动端', value: 'mobile' },
-        { name: 'PC端', value: 'pc' },
-        { name: '取消', value: false },
-      ],
+      choices: templates.type,
     },
   ])
 

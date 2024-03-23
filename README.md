@@ -13,6 +13,11 @@ pnpm install -g @leedomjs/cli
 ### Create a project
 
 ```bash
+# It will give you a default project name (my-project)
+# You can input and rename it
+leedom create
+
+# or you can input your project name directly
 leedom create my-project
 ```
 
