@@ -7,7 +7,7 @@ const { program } = require('commander')
 const inquirer = require('inquirer')
 const download = require('../lib/download')
 const initGitRepo = require('../lib/initGitRepo')
-const { success, error, info } = require('../lib/utils')
+const { success, error, info, banner } = require('../lib/utils')
 const templates = require('../lib/templates')
 const { name, version } = require('../package')
 
@@ -22,7 +22,7 @@ init()
 // 初始化
 async function init() {
   console.clear()
-  console.log(info(`\n${name} v${version}\n`))
+  console.log(banner(`\n${name} v${version}\n`))
   let projectName = program.args[0]
   if (!projectName) {
     const { action } = await inquirer.prompt([
