@@ -5,9 +5,7 @@ const fs = require('fs')
 const glob = require('glob')
 const { program } = require('commander')
 const inquirer = require('inquirer')
-const download = require('../lib/download')
-const initGitRepo = require('../lib/initGitRepo')
-const { success, error, info, banner } = require('../lib/utils')
+const { success, error, info, banner, initGitRepo, downloadTemplate } = require('../lib/utils')
 const templates = require('../lib/templates')
 const { name, version } = require('../package')
 
@@ -87,7 +85,7 @@ async function generateProject(projectName) {
     if (!url) {
       return
     } else {
-      download(projectName, url)
+      downloadTemplate(projectName, url)
         .then(async(target) => {
           const repoDirectory = path.resolve(process.cwd(), path.join('.', target))
           await initGitRepo(repoDirectory)
