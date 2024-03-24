@@ -18,6 +18,10 @@
   "bugs": {
     "url": "https://github.com/leedomjs/leedom-cli/issues"
   },
+  "files": [
+    "bin",
+    "lib"
+  ],
   "scripts": {
     "lint": "eslint .",
     "release": "bumpp -r && pnpm -r publish --access public"
