@@ -24,7 +24,7 @@
   ],
   "scripts": {
     "lint": "eslint .",
-    "release": "bumpp -r && pnpm -r publish --access public"
+    "release": "bumpp && pnpm publish"
   },
   "simple-git-hooks": {
     "pre-commit": "npx lint-staged"
