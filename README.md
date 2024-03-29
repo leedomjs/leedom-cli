@@ -2,7 +2,7 @@
 
 [![npm](https://img.shields.io/npm/v/@leedomjs/cli?color=333&label=)](https://www.npmjs.com/package/@leedomjs/cli)
 
-<img width="45%" src="https://github.com/leedomjs/leedom-cli/assets/30711792/01747f71-7e28-4cee-9aaa-ebf5d63e5356" />
+<img src="https://github.com/leedomjs/leedom-cli/assets/30711792/4a86c5c1-886d-47a6-b752-4dce3d051b87" />
 
 ## Usage
 
