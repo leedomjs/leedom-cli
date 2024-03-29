@@ -52,15 +52,59 @@ function checkDuplicateDir(projectName) {
       const existDirectoryName = path.resolve(process.cwd(), path.join('.', hasDuplicateNameDir[0]))
       console.log(`当前目录 ${info(existDirectoryName)} 已经存在，请另起项目名!`)
     } else {
-      generateProject(projectName)
+      selectStartWay(projectName)
     }
   } else {
-    generateProject(projectName)
+    selectStartWay(projectName)
   }
 }
 
-// 创建项目
-async function generateProject(projectName) {
+// 选择创建项目方式
+async function selectStartWay(projectName) {
+  const { action } = await inquirer.prompt([
+    {
+      name: 'action',
+      type: 'list',
+      message: `请选择操作类型:`,
+      choices: templates.operate,
+    },
+  ])
+  if (!action) {
+    return
+  } else {
+    action === 'default' ? generateTemplateProject(projectName) : generateCustomRepo(projectName)
+  }
+}
+
+// 创建自定义仓库地址项目
+async function generateCustomRepo(projectName) {
+  const { action: repo } = await inquirer.prompt([
+    {
+      name: 'action',
+      type: 'input',
+      message: '请输入仓库地址:',
+      default: 'leedom92/vue-h5-template',
+    },
+  ])
+
+  if (!repo) {
+    return
+  } else {
+    downloadTemplate(projectName, repo)
+      .then(async(target) => {
+        const repoDirectory = path.resolve(process.cwd(), path.join('.', target))
+        await initGitRepo(repoDirectory)
+        console.log('\n项目创建成功，可执行以下命令：\n')
+        console.log(success.bold(`  cd ${target}\n  pnpm install\n  pnpm dev\n`))
+      })
+      .catch(() => {
+        console.log(error('\n项目创建失败，请重试！\n'))
+      })
+  }
+}
+
+// 创建自带模版项目
+async function generateTemplateProject(projectName) {
   const { action } = await inquirer.prompt([
     {
       name: 'action',
