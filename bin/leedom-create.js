@@ -93,7 +93,7 @@ async function generateProject(projectName) {
           console.log(success.bold(`  cd ${target}\n  pnpm install\n  pnpm dev\n`))
         })
         .catch(() => {
-          console.log(error('\n项目创建失败，请重试！'))
+          console.log(error('\n项目创建失败，请重试！\n'))
         })
     }
   }
