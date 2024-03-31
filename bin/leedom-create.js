@@ -94,7 +94,9 @@ async function generateCustomRepo(projectName) {
       .then(async(target) => {
         const repoDirectory = path.resolve(process.cwd(), path.join('.', target))
         await initGitRepo(repoDirectory)
-        console.log(`\n项目创建成功，请查看 ${success.bold(`${repoDirectory}/README.md`)} 启动项目\n`)
+        console.log('\n项目创建成功，可执行以下命令：\n')
+        console.log(success.bold(`  cd ${target}\n`))
+        console.log(`请参考 ${success.bold(`${repoDirectory}/README.md`)} 启动项目\n`)
       })
       .catch(() => {
         console.log(error('\n项目创建失败，请重试！\n'))
