@@ -2,7 +2,7 @@
 
 [![npm](https://img.shields.io/npm/v/@leedomjs/cli?color=333&label=)](https://www.npmjs.com/package/@leedomjs/cli)
 
-<img src="https://github.com/leedomjs/leedom-cli/assets/30711792/4a86c5c1-886d-47a6-b752-4dce3d051b87" />
+<img width="682" alt="leedom-cli" src="https://github.com/leedomjs/leedom-cli/assets/30711792/ff475a09-187c-41b9-b407-8ce9df76a415">
 
 ## Usage
 
@@ -22,6 +22,12 @@ leedom create
 # or you can input your project name directly
 leedom create my-project
 ```
+
+# Action
+
+<div align="center">
+  <video src="https://github.com/leedomjs/leedom-cli/assets/30711792/2d7fd198-cc6e-435e-8b1e-3cb6d8902dbe" />
+</div>
 
 ## License
 
