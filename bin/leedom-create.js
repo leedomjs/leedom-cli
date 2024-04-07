@@ -5,7 +5,7 @@ const fs = require('fs')
 const glob = require('glob')
 const { program } = require('commander')
 const inquirer = require('inquirer')
-const { success, error, info, banner, initGitRepo, downloadTemplate } = require('../lib/utils')
+const { success, error, info, banner, initGitRepo, downloadTemplate, fixDirectoryPath } = require('../lib/utils')
 const templates = require('../lib/templates')
 const { name, version } = require('../package')
 
@@ -50,7 +50,7 @@ function checkDuplicateDir(projectName) {
 
     if (hasDuplicateNameDir.length) {
       const existDirectoryName = path.resolve(process.cwd(), path.join('.', hasDuplicateNameDir[0]))
-      console.log(`当前目录 ${info(existDirectoryName)} 已经存在，请另起项目名!`)
+      console.log(`当前目录 ${info(fixDirectoryPath(existDirectoryName))} 已经存在，请另起项目名!`)
     } else {
       selectStartWay(projectName)
     }
@@ -96,7 +96,7 @@ async function generateCustomRepo(projectName) {
         await initGitRepo(repoDirectory)
         console.log('\n项目创建成功，可执行以下命令：\n')
         console.log(success.bold(`  cd ${target}\n`))
-        console.log(`请参考 ${success.bold(`${repoDirectory}/README.md`)} 启动项目\n`)
+        console.log(`请参考 ${success.bold(`${fixDirectoryPath(repoDirectory)}/README.md`)} 启动项目\n`)
       })
       .catch(() => {
         console.log(error('\n项目创建失败，请重试！\n'))
