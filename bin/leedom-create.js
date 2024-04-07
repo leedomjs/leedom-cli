@@ -14,6 +14,8 @@ program.name('leedom')
   .description('create a new project powered by Leedom')
   .parse(process.argv)
 
+let timeout = null
+
 // 开始执行任务
 init()
 
@@ -51,6 +53,9 @@ function checkDuplicateDir(projectName) {
     if (hasDuplicateNameDir.length) {
       const existDirectoryName = path.resolve(process.cwd(), path.join('.', hasDuplicateNameDir[0]))
       console.log(`当前目录 ${info(fixDirectoryPath(existDirectoryName))} 已经存在，请另起项目名!`)
+      timeout = setTimeout(() => {
+        init()
+      }, 2000)
     } else {
       selectStartWay(projectName)
     }
@@ -61,6 +66,7 @@ function checkDuplicateDir(projectName) {
 
 // 选择创建项目方式
 async function selectStartWay(projectName) {
+  clearTimeout(timeout)
   const { action } = await inquirer.prompt([
     {
       name: 'action',
