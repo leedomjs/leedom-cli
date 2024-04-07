@@ -15,15 +15,15 @@ program.name('leedom')
   .parse(process.argv)
 
 let timeout = null
+const firstParam = program.args[0]
 
 // 开始执行任务
-init()
+init(firstParam)
 
 // 初始化
-async function init() {
+async function init(projectName) {
   console.clear()
   console.log(banner(`\n${name} v${version}\n`))
-  let projectName = program.args[0]
   if (!projectName) {
     const { action } = await inquirer.prompt([
       {
