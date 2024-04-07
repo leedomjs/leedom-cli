@@ -103,9 +103,11 @@ async function generateCustomRepo(projectName) {
         console.log('\n项目创建成功，可执行以下命令：\n')
         console.log(success.bold(`  cd ${target}\n`))
         console.log(`请参考 ${success.bold(`${fixDirectoryPath(repoDirectory)}/README.md`)} 启动项目\n`)
+        process.exit(0)
       })
       .catch(() => {
         console.log(error('\n项目创建失败，请重试！\n'))
+        process.exit(1)
       })
   }
 }
@@ -142,9 +144,11 @@ async function generateTemplateProject(projectName) {
           await initGitRepo(repoDirectory)
           console.log('\n项目创建成功，可执行以下命令：\n')
           console.log(success.bold(`  cd ${target}\n  pnpm install\n  pnpm dev\n`))
+          process.exit(0)
         })
         .catch(() => {
           console.log(error('\n项目创建失败，请重试！\n'))
+          process.exit(1)
         })
     }
   }
