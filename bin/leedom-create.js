@@ -25,15 +25,15 @@ async function init(projectName) {
   console.clear()
   console.log(banner(`\n${name} v${version}\n`))
   if (!projectName) {
-    const { action } = await inquirer.prompt([
+    const { name } = await inquirer.prompt([
       {
-        name: 'action',
+        name,
         type: 'input',
         message: '请输入您的项目名:',
         default: 'my-project',
       },
     ])
-    projectName = action
+    projectName = name
   }
   checkDuplicateDir(projectName)
 }
@@ -67,26 +67,26 @@ function checkDuplicateDir(projectName) {
 // 选择创建项目方式
 async function selectStartWay(projectName) {
   clearTimeout(timeout)
-  const { action } = await inquirer.prompt([
+  const { operation } = await inquirer.prompt([
     {
-      name: 'action',
+      name: 'operation',
       type: 'list',
       message: `请选择操作类型:`,
       choices: templates.operate,
     },
   ])
-  if (!action) {
+  if (!operation) {
     return
   } else {
-    action === 'default' ? generateTemplateProject(projectName) : generateCustomRepo(projectName)
+    operation === 'default' ? generateTemplateProject(projectName) : generateCustomRepo(projectName)
   }
 }
 
 // 创建自定义仓库地址项目
 async function generateCustomRepo(projectName) {
-  const { action: repo } = await inquirer.prompt([
+  const { repo } = await inquirer.prompt([
     {
-      name: 'action',
+      name: 'repo',
       type: 'input',
       message: '请输入仓库地址:',
       default: 'leedom92/vue-h5-template',
@@ -114,24 +114,24 @@ async function generateCustomRepo(projectName) {
 
 // 创建自带模版项目
 async function generateTemplateProject(projectName) {
-  const { action } = await inquirer.prompt([
+  const { type } = await inquirer.prompt([
     {
-      name: 'action',
+      name: 'type',
       type: 'list',
       message: `请选择模版类型:`,
       choices: templates.type,
     },
   ])
 
-  if (!action) {
+  if (!type) {
     return
   } else {
-    const { action: url } = await inquirer.prompt([
+    const { url } = await inquirer.prompt([
       {
-        name: 'action',
+        name: 'url',
         type: 'list',
         message: `请选择模版:`,
-        choices: templates[action],
+        choices: templates[type],
       },
     ])
 
