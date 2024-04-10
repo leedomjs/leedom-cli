@@ -25,15 +25,15 @@ async function init(projectName) {
   console.clear()
   console.log(banner(`\n${name} v${version}\n`))
   if (!projectName) {
-    const { name } = await inquirer.prompt([
+    const { myProject } = await inquirer.prompt([
       {
-        name,
+        name: 'myProject',
         type: 'input',
         message: '请输入您的项目名:',
         default: 'my-project',
       },
     ])
-    projectName = name
+    projectName = myProject
   }
   checkDuplicateDir(projectName)
 }
