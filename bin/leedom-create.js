@@ -5,7 +5,7 @@ const fs = require('fs')
 const glob = require('glob')
 const { program } = require('commander')
 const inquirer = require('inquirer')
-const { success, error, info, banner, initGitRepo, downloadTemplate, fixDirectoryPath } = require('../lib/utils')
+const { success, error, info, banner, initGitRepo, downloadTemplate, fixDirectoryPath, checkNewVersion } = require('../lib/utils')
 const templates = require('../lib/templates')
 const { name, version } = require('../package')
 
@@ -24,6 +24,12 @@ init(firstParam)
 async function init(projectName) {
   console.clear()
   console.log(banner(`\n${name} v${version}\n`))
+
+  await checkNewVersion()
+  await confirmProjectName(projectName)
+}
+
+async function confirmProjectName(projectName) {
   if (!projectName) {
     const { myProject } = await inquirer.prompt([
       {
@@ -52,9 +58,9 @@ function checkDuplicateDir(projectName) {
 
     if (hasDuplicateNameDir.length) {
       const existDirectoryName = path.resolve(process.cwd(), path.join('.', hasDuplicateNameDir[0]))
-      console.log(`当前目录 ${info(fixDirectoryPath(existDirectoryName))} 已经存在，请另起项目名!`)
+      console.log(`当前目录 ${info(fixDirectoryPath(existDirectoryName))} 已经存在，请另起项目名!\n`)
       timeout = setTimeout(() => {
-        init()
+        confirmProjectName()
       }, 2000)
     } else {
       selectStartWay(projectName)
