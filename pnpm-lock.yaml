@@ -38,11 +38,11 @@ dependencies:
 
 devDependencies:
   '@leedomjs/eslint-config-basic':
-    specifier: ^0.8.3
-    version: 0.8.3(eslint@8.57.0)
+    specifier: ^0.11.2
+    version: 0.11.2(eslint@8.57.0)
   bumpp:
-    specifier: ^9.4.0
-    version: 9.4.0
+    specifier: ^9.4.1
+    version: 9.4.1
   eslint:
     specifier: ^8.57.0
     version: 8.57.0
@@ -50,8 +50,8 @@ devDependencies:
     specifier: ^15.2.2
     version: 15.2.2
   simple-git-hooks:
-    specifier: ^2.11.0
-    version: 2.11.0
+    specifier: ^2.11.1
+    version: 2.11.1
 
 packages:
 
@@ -139,10 +139,10 @@ packages:
       type-detect: 4.0.8
     dev: true
 
-  /@leedomjs/eslint-config-basic@0.8.3(eslint@8.57.0):
-    resolution: {integrity: sha512-jC7A5wAjywqEs+kvmQKdLXfbmzOSt+CzERNPQI7+PEN21UJE7P5vPcZXWimnaCR/Ble5e/JtnN7jjnK+HaSzkw==}
+  /@leedomjs/eslint-config-basic@0.11.2(eslint@8.57.0):
+    resolution: {integrity: sha512-O6TSKGuQSPaz0EazkrJZaQHHi2APTCz/PJ4ssYUTFlYkDf3xakNJO+77eE8SeODrzn5cCvpvLlZitlJtytpjdA==}
     peerDependencies:
-      eslint: '>=7.4.0'
+      eslint: '>=7.4.0 <9'
     dependencies:
       eslint: 8.57.0
       eslint-plugin-import: 2.29.1(eslint@8.57.0)
@@ -424,8 +424,8 @@ packages:
       ieee754: 1.2.1
     dev: false
 
-  /bumpp@9.4.0:
-    resolution: {integrity: sha512-T+N+B5mSSvsTt7kgxGXCKQd957IxmEZwMn2nWirspGUY08u/cBNrpQDMXk43fzLegZtKtXS1v9S06vq2zf6lXQ==}
+  /bumpp@9.4.1:
+    resolution: {integrity: sha512-kzhp/LpNX0HkUpEyLd7sU2LTN/mbAVgcxJ1Zi2cAJTE/tul6rypSKGpH8UywDpzKWItL8LVdKsIFnwmylw0+7g==}
     engines: {node: '>=10'}
     hasBin: true
     dependencies:
@@ -2504,8 +2504,8 @@ packages:
     resolution: {integrity: sha512-bzyZ1e88w9O1iNJbKnOlvYTrWPDl46O1bG0D3XInv+9tkPrxrN8jUUTiFlDkkmKWgn1M6CfIA13SuGqOa9Korw==}
     engines: {node: '>=14'}
 
-  /simple-git-hooks@2.11.0:
-    resolution: {integrity: sha512-Wab2uzjGJEL8Kx+2UY8waUSfkiolt2RbaAJWvPCjaAEXrrKoS7JqPk4STiIVl/yt3asZRUzFoK2ryhwvgh5rYw==}
+  /simple-git-hooks@2.11.1:
+    resolution: {integrity: sha512-tgqwPUMDcNDhuf1Xf6KTUsyeqGdgKMhzaH4PAZZuzguOgTl5uuyeYe/8mWgAr6IBxB5V06uqEf6Dy37gIWDtDg==}
     hasBin: true
     requiresBuild: true
     dev: true
